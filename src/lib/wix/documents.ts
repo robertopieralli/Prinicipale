@@ -1,4 +1,5 @@
 import { getWixClient, isWixConfigured, DOCUMENTS_COLLECTION } from './client';
+import { wixDocument } from './media';
 
 export type ReservedDocument = {
   id: string;
@@ -7,6 +8,7 @@ export type ReservedDocument = {
   category: string;
   sector: string;
   fileUrl: string | null;
+  fileName: string | null;
   publishedAt: string | null;
 };
 
@@ -31,15 +33,19 @@ export async function getReservedDocuments(): Promise<{
       .limit(100)
       .find();
 
-    const documents = res.items.map((item: Record<string, any>) => ({
-      id: item._id,
-      title: (item.titolo ?? item.title ?? 'Documento').trim(),
-      description: (item.descrizione ?? item.description ?? '').trim(),
-      category: (item.categoria ?? item.category ?? 'Documenti').trim(),
-      sector: (item.settore ?? item.sector ?? '').trim(),
-      fileUrl: item.file?.url ?? item.file ?? item.allegato ?? null,
-      publishedAt: item.data ?? item._createdDate ?? null,
-    }));
+    const documents = res.items.map((item: Record<string, any>) => {
+      const file = wixDocument(item.file ?? item.allegato ?? null);
+      return {
+        id: item._id,
+        title: (item.titolo ?? item.title ?? 'Documento').trim(),
+        description: (item.descrizione ?? item.description ?? '').trim(),
+        category: (item.categoria ?? item.category ?? 'Documenti').trim(),
+        sector: (item.settore ?? item.sector ?? '').trim(),
+        fileUrl: file?.url ?? null,
+        fileName: file?.filename ?? null,
+        publishedAt: item.data ?? item._createdDate ?? null,
+      };
+    });
 
     return { documents, error: null };
   } catch (error) {

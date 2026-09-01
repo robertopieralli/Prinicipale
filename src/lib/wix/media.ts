@@ -26,3 +26,23 @@ export function wixImage(
     return null;
   }
 }
+
+/**
+ * Il campo DOCUMENT del CMS restituisce un URI `wix:document://…`, che il
+ * browser non sa aprire. Va tradotto nell'URL di download vero prima di
+ * finire in un href.
+ */
+export function wixDocument(
+  source: string | { url?: string } | undefined | null,
+): { url: string; filename?: string } | null {
+  const raw = typeof source === 'string' ? source : source?.url;
+  if (!raw) return null;
+  if (raw.startsWith('http://') || raw.startsWith('https://')) return { url: raw };
+  if (!raw.startsWith('wix:document://')) return null;
+  try {
+    const resolved = media.getDocumentUrl(raw);
+    return { url: resolved.url, filename: resolved.filename };
+  } catch {
+    return null;
+  }
+}

@@ -78,26 +78,29 @@ Percorsi coinvolti:
 
 ### Archivio documenti riservato
 
-L'archivio legge una collection CMS del sito Wix, così la segreteria continua a
-caricare i file dal pannello che già conosce. Va creata una volta sola:
+L'archivio legge la collection CMS `DocumentiRiservati`, **già creata sul sito**:
+la segreteria carica i file dal pannello Wix che conosce già, in *CMS →
+Documenti riservati*. La lettura è riservata ai membri autenticati, la scrittura
+alla sola amministrazione.
 
-1. Nel dashboard Wix apri **CMS → Crea collection**.
-2. Chiamala `DocumentiRiservati` (oppure cambia `WIX_DOCUMENTS_COLLECTION`).
-3. Aggiungi i campi:
+Campi disponibili:
 
-   | Campo | Tipo | Note |
-   | --- | --- | --- |
-   | `titolo` | Testo | Titolo del documento |
-   | `descrizione` | Testo | Riga di sintesi, facoltativa |
-   | `categoria` | Testo | Es. «Accordi», «Circolari», «Modulistica» |
-   | `settore` | Testo | Settore associativo, facoltativo |
-   | `file` | Documento | Il PDF da scaricare |
-   | `data` | Data | Data del documento |
+| Campo | Tipo | Note |
+| --- | --- | --- |
+| `titolo` | Testo | Titolo del documento |
+| `descrizione` | Testo | Riga di sintesi, facoltativa |
+| `categoria` | Testo | Es. «Accordi», «Circolari», «Modulistica» |
+| `settore` | Testo | Settore associativo, facoltativo |
+| `file` | Documento | Il PDF da scaricare |
+| `data` | Data | Data del documento |
 
-4. In **Permessi** imposta la lettura su *Solo membri del sito*.
+I valori di `categoria` e `settore` alimentano da soli i filtri dell'archivio:
+non serve toccare il codice per aggiungere una nuova categoria, basta usarla in
+un documento.
 
-Finché la collection non esiste, l'area soci resta accessibile e segnala che
-l'archivio non è ancora collegato.
+Il campo `file` restituisce un URI `wix:document://`, che viene tradotto
+nell'URL di download reale prima di finire in pagina (`src/lib/wix/media.ts`,
+coperto da `npm test`).
 
 ## Cosa cambia rispetto al sito Wix
 

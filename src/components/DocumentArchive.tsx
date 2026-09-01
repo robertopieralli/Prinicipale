@@ -117,6 +117,9 @@ export default function DocumentArchive({ documents }: { documents: ReservedDocu
                   {doc.publishedAt ? (
                     <span className="text-[var(--ink-faint)]">{formatDate(doc.publishedAt)}</span>
                   ) : null}
+                  {doc.fileName ? (
+                    <span className="text-[var(--ink-faint)]">{doc.fileName}</span>
+                  ) : null}
                 </div>
                 <h2 className="mt-3 text-base font-semibold">{doc.title}</h2>
                 {doc.description ? (
