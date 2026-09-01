@@ -220,7 +220,7 @@ export default async function HomePage() {
               <ul className="mt-7 space-y-2.5 text-sm text-[var(--ink-muted)]">
                 {services.slice(0, 4).map((service) => (
                   <li key={service.slug} className="flex gap-2.5">
-                    <span aria-hidden className="text-[var(--accent)]">✓</span>
+                    <span aria-hidden className="text-[var(--secondary)]">✓</span>
                     {service.name}
                   </li>
                 ))}

@@ -5,7 +5,16 @@ export const site = {
   tagline: 'La voce dei medici autonomi a Bologna',
   claim:
     'Rappresentanza, tutela e assistenza per i medici convenzionati e dipendenti della provincia di Bologna.',
-  address: 'Via G. Perti 22, 40127 Bologna',
+  address: 'Via del Tappezziere 4, 40138 Bologna (BO)',
+  /* Lockup provinciale del design system: 1800×1016, scuro su trasparente.
+     Non esiste una versione in negativo, quindi sul tema scuro va posato su
+     una placca chiara invece di essere invertito. */
+  logo: {
+    src: 'https://static.wixstatic.com/media/c87410_4bb8e951a46747cf9d071a4b9815df19~mv2.png',
+    width: 1800,
+    height: 1016,
+    alt: 'SNAMI — Sezione Provinciale di Bologna',
+  },
   taxCode: '92031260372',
   email: 'info@snami.bologna.it',
   pec: 'info@snami.bologna.it',

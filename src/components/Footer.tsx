@@ -8,20 +8,16 @@ export default function Footer() {
     <footer className="mt-24 border-t bg-[var(--bg-elevated)]">
       <div className="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <span
-              aria-hidden
-              className="grid h-11 w-11 place-items-center rounded-xl bg-[var(--brand)] text-sm font-bold text-[var(--brand-ink)]"
-            >
-              SN
-            </span>
-            <span className="font-bold leading-tight">
-              SNAMI Bologna
-              <span className="block text-xs font-medium uppercase tracking-[0.14em] text-[var(--ink-faint)]">
-                Sezione Provinciale
-              </span>
-            </span>
-          </div>
+          <span className="logo-plate h-14">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={site.logo.src}
+              alt={site.logo.alt}
+              width={site.logo.width}
+              height={site.logo.height}
+              className="h-full w-auto"
+            />
+          </span>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-[var(--ink-muted)]">
             {site.extendedName}. Un sindacato autonomo e polisettoriale, al fianco dei medici della
             provincia di Bologna.

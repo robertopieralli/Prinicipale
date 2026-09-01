@@ -31,18 +31,18 @@ export default function Header({ loggedIn }: { loggedIn: boolean }) {
       }`}
     >
       <div className="wrap flex h-[4.5rem] items-center gap-6">
-        <Link href="/" className="flex items-center gap-3 font-semibold">
-          <span
-            aria-hidden
-            className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--brand)] text-sm font-bold tracking-tight text-[var(--brand-ink)]"
-          >
-            SN
-          </span>
-          <span className="leading-tight">
-            <span className="block text-[0.95rem] font-bold tracking-tight">SNAMI Bologna</span>
-            <span className="block text-[0.68rem] font-medium uppercase tracking-[0.14em] text-[var(--ink-faint)]">
-              Sezione Provinciale
-            </span>
+        <Link href="/" className="flex items-center" aria-label={`${site.legalName} — home`}>
+          {/* Il lockup contiene già il nome per esteso: ripeterlo accanto
+              sarebbe una doppia intestazione. */}
+          <span className="logo-plate h-11 md:h-12">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={site.logo.src}
+              alt={site.logo.alt}
+              width={site.logo.width}
+              height={site.logo.height}
+              className="h-full w-auto"
+            />
           </span>
         </Link>
 

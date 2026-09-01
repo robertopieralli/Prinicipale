@@ -26,7 +26,7 @@ export default function SettoriPage() {
             className="card-hover surface flex flex-col p-8"
           >
             <h2 className="text-xl font-semibold tracking-tight">{sector.name}</h2>
-            <p className="mt-1.5 text-sm font-medium text-[var(--accent)]">{sector.short}</p>
+            <p className="mt-1.5 text-sm font-medium text-[var(--secondary)]">{sector.short}</p>
             <p className="mt-4 flex-1 text-sm leading-relaxed text-[var(--ink-muted)]">
               {sector.description}
             </p>
