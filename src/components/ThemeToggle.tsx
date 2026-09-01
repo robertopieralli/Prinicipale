@@ -15,8 +15,9 @@ export default function ThemeToggle() {
         return null;
       }
     })();
-    const initial: Mode =
-      stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    // Il sito è su base bianca: si parte sempre dal chiaro, e lo scuro resta
+    // una scelta esplicita di chi naviga.
+    const initial: Mode = stored ?? 'light';
     setMode(initial);
     document.documentElement.dataset.theme = initial;
   }, []);

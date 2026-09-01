@@ -23,11 +23,13 @@
   --color-ink-700: #2b2b2b;
   --color-ink-900: #221f20;
 
-  --color-red-100: #f0dfdb;
-  --color-red-300: #d1a99e;
-  --color-red-500: #a9614d;
-  --color-red-700: #7f1811;
-  --color-red-900: #520f0a;
+  --color-red-100: #f7e4e0;
+  --color-red-300: #d9a99f;
+  --color-red-500: #a03c29;
+  --color-red-700: #8c0404;
+  --color-red-900: #5c0202;
+  --color-signal: #fa4d4d;
+  --color-ivory: #fbfaf6;
 
   --color-green-100: #e2ebd7;
   --color-green-300: #a8c189;
@@ -63,55 +65,40 @@
      scuro sopra l'oxblood sparisce — perciò su rosso si scrive in bianco.
    ------------------------------------------------------------------------- */
 
+/* ---------------------------------------------------------------------------
+   Ruoli.
+   Il sito è su base bianca, come la sezione regionale presa a riferimento:
+   fondo bianco, bande avorio, famiglia rossa per marchio e azioni.
+
+   Il tema scuro non segue più automaticamente le impostazioni del sistema —
+   altrimenti su un dispositivo in modalità scura il sito si aprirebbe nero,
+   che è l'opposto di quanto serve. Resta disponibile come scelta esplicita
+   dell'utente dal pulsante in intestazione.
+
+   Vincoli mantenuti dal design system:
+   · il rosso pieno regge solo testo bianco, mai testo scuro;
+   · il rosso segnale è chiaro (3,4:1 su bianco) e vale solo per filetti e
+     marchi, mai per il testo.
+   ------------------------------------------------------------------------- */
+
 :root {
   --bg: #ffffff;
   --bg-elevated: #ffffff;
-  --bg-sunken: #f5f3ef;
+  --bg-sunken: #fbfaf6;
   --ink: #221f20;
   --ink-muted: #6b6b6b;
   --ink-faint: #8f8d89;
-  --line: #d8d5d0;
-  --line-strong: #b5b2ad;
-  --brand: #7f1811;
+  --line: #e6e2dc;
+  --line-strong: #c9c4bc;
+  --brand: #8c0404;
   --brand-ink: #ffffff;
   --brand-soft: #fbf4f2;
-  /* Il rosso porta le azioni: collegamenti, frecce, pulsanti, messa a fuoco. */
-  --accent: #7f1811;
-  /* Il verde resta secondario e compare solo in marchi brevi: occhielli,
-     etichette di settore, segni di spunta. Mai in campiture ampie. */
-  --secondary: #62883b;
-  /* green-600 su bianco sta a 4,0:1, sotto la soglia per il testo piccolo:
-     per le etichette si usa green-800, che arriva a 7,4:1. */
-  --secondary-text: #3d5626;
-  --accent-soft: #f3f7ee;
-  --halo-warm: #fffad2;
-  --halo-soft: #fbf4f2;
+  --accent: #8c0404;
+  --secondary: #a03c29;
+  --secondary-text: #a03c29;
+  --signal: #fa4d4d;
   --halo: rgba(34, 31, 32, 0.10);
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #171514;
-    --bg-elevated: #1f1c1b;
-    --bg-sunken: #292524;
-    --ink: #f2eee9;
-    --ink-muted: #a79e98;
-    --ink-faint: #867d77;
-    --line: #3b3533;
-    --line-strong: #4b4340;
-    --brand: #d98a7e;
-    --brand-ink: #221f20;
-    --brand-soft: #2a1a17;
-    --accent: #d98a7e;
-    --secondary: #9dbe77;
-    --secondary-text: #9dbe77;
-    --accent-soft: #1d2317;
-    --halo-warm: #4a4527;
-    --halo-soft: #2a1a17;
-    --halo: rgba(0, 0, 0, 0.5);
-    color-scheme: dark;
-  }
 }
 
 :root[data-theme="dark"] {
@@ -123,15 +110,13 @@
   --ink-faint: #867d77;
   --line: #3b3533;
   --line-strong: #4b4340;
-  --brand: #d98a7e;
+  --brand: #e2897f;
   --brand-ink: #221f20;
   --brand-soft: #2a1a17;
-  --accent: #d98a7e;
-  --secondary: #9dbe77;
-  --secondary-text: #9dbe77;
-  --accent-soft: #1d2317;
-  --halo-warm: #4a4527;
-  --halo-soft: #2a1a17;
+  --accent: #e2897f;
+  --secondary: #d99a86;
+  --secondary-text: #d99a86;
+  --signal: #fa4d4d;
   --halo: rgba(0, 0, 0, 0.5);
   color-scheme: dark;
 }
@@ -264,12 +249,6 @@ h1.display {
 .logo-plate { display: inline-flex; border-radius: .6rem; transition: background .2s, padding .2s; }
 .logo-plate img { display: block; height: 100%; width: auto; }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo-plate {
-    background: #ffffff;
-    padding: .3rem .5rem;
-  }
-}
 :root[data-theme="dark"] .logo-plate { background: #ffffff; padding: .3rem .5rem; }
 
 /* I bordi dei campi devono staccare dal fondo di almeno 3:1: ink-200 si ferma

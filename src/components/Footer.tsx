@@ -5,7 +5,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t bg-[var(--bg-elevated)]">
+    <footer className="mt-24 border-t bg-[var(--bg-sunken)]">
       <div className="wrap grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <span className="logo-plate h-14">

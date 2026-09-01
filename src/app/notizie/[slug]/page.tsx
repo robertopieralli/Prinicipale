@@ -92,7 +92,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </div>
 
       {related.filter((p) => p.slug !== post.slug).length ? (
-        <section className="border-t bg-[var(--bg-elevated)] py-16">
+        <section className="border-t bg-[var(--bg-sunken)] py-16">
           <div className="wrap">
             <h2 className="display text-2xl">Continua a leggere</h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

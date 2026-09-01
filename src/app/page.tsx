@@ -68,7 +68,7 @@ export default async function HomePage() {
 
       {/* --------------------------------------------------------- scorrimento */}
       {posts.length > 2 ? (
-        <div className="marquee overflow-hidden border-y bg-[var(--bg-elevated)] py-4">
+        <div className="marquee overflow-hidden border-y bg-[var(--bg-sunken)] py-4">
           <div className="marquee-track">
             {[...posts, ...posts].map((post, i) => (
               <Link
@@ -113,7 +113,7 @@ export default async function HomePage() {
       </section>
 
       {/* ------------------------------------------------------------- settori */}
-      <section className="border-y bg-[var(--bg-elevated)] py-20 md:py-28">
+      <section className="border-y bg-[var(--bg-sunken)] py-20 md:py-28">
         <div className="wrap">
           <div className="max-w-2xl">
             <p className="eyebrow">Rappresentanza</p>
@@ -180,7 +180,7 @@ export default async function HomePage() {
       </section>
 
       {/* ------------------------------------------------------------ adesione */}
-      <section className="border-t bg-[var(--bg-elevated)] py-20 md:py-28">
+      <section className="border-t bg-[var(--bg-sunken)] py-20 md:py-28">
         <div className="wrap grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="eyebrow">Adesione</p>
@@ -220,7 +220,7 @@ export default async function HomePage() {
               <ul className="mt-7 space-y-2.5 text-sm text-[var(--ink-muted)]">
                 {services.slice(0, 4).map((service) => (
                   <li key={service.slug} className="flex gap-2.5">
-                    <span aria-hidden className="text-[var(--secondary)]">✓</span>
+                    <span aria-hidden className="text-[var(--brand)]">✓</span>
                     {service.name}
                   </li>
                 ))}

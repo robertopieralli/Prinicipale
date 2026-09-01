@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * Il tema viene applicato prima della prima pittura per evitare il lampo
- * bianco su chi ha scelto lo scuro.
+ * Il tema e' applicato prima della prima pittura. Il valore predefinito e' il
+ * chiaro: il sito e' su base bianca e non segue il tema del sistema operativo.
  */
-const themeScript = `try{var t=localStorage.getItem('snami-theme');if(t){document.documentElement.dataset.theme=t}}catch(e){}`;
+const themeScript = `try{document.documentElement.dataset.theme=localStorage.getItem('snami-theme')||'light'}catch(e){document.documentElement.dataset.theme='light'}`;
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const loggedIn = await isLoggedIn();
