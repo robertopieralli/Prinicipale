@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   SNAMI Bologna — sistema di design
+   Palette istituzionale: blu notte (autorevolezza), rosso segnale (azione
+   sindacale), verde acqua (sanità). Tipografia editoriale ad alto contrasto.
+   ========================================================================== */
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+
+  --color-navy-50: #eef4f9;
+  --color-navy-100: #d3e2ef;
+  --color-navy-200: #a3c1da;
+  --color-navy-300: #6c99c0;
+  --color-navy-400: #3f74a5;
+  --color-navy-500: #245a8c;
+  --color-navy-600: #17456e;
+  --color-navy-700: #103352;
+  --color-navy-800: #0b2439;
+  --color-navy-900: #071726;
+  --color-navy-950: #040e17;
+
+  --color-signal-400: #ef5c6b;
+  --color-signal-500: #d92b3f;
+  --color-signal-600: #b81f31;
+
+  --color-teal-400: #3fbfb1;
+  --color-teal-500: #159c8e;
+  --color-teal-600: #0d7a6f;
+
+  --color-sand-50: #faf8f4;
+  --color-sand-100: #f2ede4;
+  --color-sand-200: #e5dccc;
+
+  --radius-card: 1.25rem;
+}
+
+:root {
+  --bg: #f7f8fa;
+  --bg-elevated: #ffffff;
+  --bg-sunken: #eef1f5;
+  --ink: #071726;
+  --ink-muted: #4a5b6b;
+  --ink-faint: #7b8b99;
+  --line: #dfe5ec;
+  --line-strong: #c6d1dd;
+  --brand: #103352;
+  --brand-ink: #ffffff;
+  --accent: #d92b3f;
+  --halo: rgba(16, 51, 82, 0.08);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  /* placeholder — sovrascritto sotto, tenuto per specificità coerente */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #060f19;
+    --bg-elevated: #0c1a28;
+    --bg-sunken: #030a12;
+    --ink: #eef4f9;
+    --ink-muted: #a3b5c6;
+    --ink-faint: #6f8496;
+    --line: #17293a;
+    --line-strong: #23394d;
+    --brand: #6c99c0;
+    --brand-ink: #040e17;
+    --accent: #ef5c6b;
+    --halo: rgba(108, 153, 192, 0.14);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #060f19;
+  --bg-elevated: #0c1a28;
+  --bg-sunken: #030a12;
+  --ink: #eef4f9;
+  --ink-muted: #a3b5c6;
+  --ink-faint: #6f8496;
+  --line: #17293a;
+  --line-strong: #23394d;
+  --brand: #6c99c0;
+  --brand-ink: #040e17;
+  --accent: #ef5c6b;
+  --halo: rgba(108, 153, 192, 0.14);
+  color-scheme: dark;
+}
+
+* { border-color: var(--line); }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- utilità di composizione ---------------------------------------------- */
+
+.wrap { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: 1.25rem; }
+@media (min-width: 768px) { .wrap { padding-inline: 2rem; } }
+
+.surface {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.prose-snami { max-width: 68ch; line-height: 1.72; color: var(--ink-muted); }
+.prose-snami h2, .prose-snami h3, .prose-snami h4 { color: var(--ink); font-weight: 650; line-height: 1.25; margin-top: 2.2em; margin-bottom: 0.6em; }
+.prose-snami h2 { font-size: 1.5rem; letter-spacing: -0.015em; }
+.prose-snami h3 { font-size: 1.2rem; }
+.prose-snami p { margin-bottom: 1.15em; }
+.prose-snami a { color: var(--accent); text-underline-offset: 3px; text-decoration: underline; }
+.prose-snami ul, .prose-snami ol { margin: 0 0 1.15em 1.3em; }
+.prose-snami ul { list-style: disc; }
+.prose-snami ol { list-style: decimal; }
+.prose-snami li { margin-bottom: 0.4em; }
+.prose-snami blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.1rem;
+  font-style: italic;
+  color: var(--ink);
+  margin: 1.6em 0;
+}
+.prose-snami img { border-radius: 0.9rem; margin: 1.6em 0; }
+.prose-snami table { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: 0.92rem; }
+.prose-snami th, .prose-snami td { border: 1px solid var(--line); padding: 0.6rem 0.8rem; text-align: left; }
+
+/* Sfondo a maglia: due aloni sfumati, resi con gradienti radiali. */
+.mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 32rem at 12% -10%, color-mix(in oklab, var(--brand) 26%, transparent), transparent 62%),
+    radial-gradient(44rem 28rem at 92% 8%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 60%);
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marquee 46s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.rise { animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.card-hover { transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease, border-color 0.32s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -28px var(--halo); border-color: var(--line-strong); }
+
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
