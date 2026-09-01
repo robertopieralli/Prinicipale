@@ -27,12 +27,12 @@ export default function PostCard({ post, featured = false }: { post: Post; featu
             />
           </div>
         ) : (
-          <div className={`mesh relative bg-[var(--bg-sunken)] ${featured ? 'h-full min-h-64' : 'aspect-[16/9]'}`} />
+          <div className={`relative bg-[var(--bg-sunken)] ${featured ? 'h-full min-h-64' : 'aspect-[16/9]'}`} />
         )}
       </Link>
 
       <div className={`flex flex-col p-6 ${featured ? 'justify-center md:p-9' : ''}`}>
-        <div className="flex items-center gap-3 text-xs text-[var(--ink-faint)]">
+        <div className="flex items-center gap-3 text-xs text-[var(--ink-muted)]">
           <time dateTime={post.publishedAt ?? undefined}>{formatDate(post.publishedAt)}</time>
           <span aria-hidden>·</span>
           <span>{post.minutesToRead} min di lettura</span>

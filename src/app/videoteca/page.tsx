@@ -39,7 +39,7 @@ export default function VideotecaPage() {
         <div className="grid gap-5 md:grid-cols-2">
           {videos.map((video) => (
             <article key={video.title} className="surface overflow-hidden">
-              <div className="mesh relative grid aspect-video place-items-center bg-[var(--bg-sunken)]">
+              <div className="relative grid aspect-video place-items-center bg-[var(--bg-sunken)]">
                 <span aria-hidden className="text-4xl opacity-40">▶</span>
               </div>
               <div className="p-7">

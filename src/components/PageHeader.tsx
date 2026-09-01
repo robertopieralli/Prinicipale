@@ -8,9 +8,9 @@ export default function PageHeader({
   lead?: string;
 }) {
   return (
-    <section className="grain relative overflow-hidden border-b">
-      <div className="mesh" aria-hidden />
+    <section className="relative overflow-hidden border-b">
       <div className="wrap relative py-16 md:py-24">
+        <hr className="rule-brand mb-8" />
         <p className="eyebrow">{eyebrow}</p>
         <h1 className="display mt-4 max-w-3xl text-4xl md:text-6xl">{title}</h1>
         {lead ? (

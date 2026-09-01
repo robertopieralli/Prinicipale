@@ -112,8 +112,7 @@ export default async function AreaSociPage({
 
   return (
     <>
-      <section className="grain relative overflow-hidden border-b">
-        <div className="mesh" aria-hidden />
+      <section className="relative overflow-hidden border-b">
         <div className="wrap relative flex flex-wrap items-end justify-between gap-6 py-14 md:py-20">
           <div>
             <p className="eyebrow">Area riservata</p>

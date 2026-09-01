@@ -7,8 +7,10 @@
    ========================================================================== */
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  /* Lato è il carattere realmente in uso nei documenti del sindacato.
+     Gelasio serve solo alle citazioni: non è un carattere da titoli. */
+  --font-sans: "Lato", "Helvetica Neue", Arial, sans-serif;
+  --font-quote: "Gelasio", Georgia, "Times New Roman", serif;
 
   /* Famiglie del design system SNAMI Emilia-Romagna, campionate dai file
      ufficiali del logo. Nessuna tinta è stata inventata. */
@@ -78,6 +80,9 @@
   /* Il verde resta secondario e compare solo in marchi brevi: occhielli,
      etichette di settore, segni di spunta. Mai in campiture ampie. */
   --secondary: #62883b;
+  /* green-600 su bianco sta a 4,0:1, sotto la soglia per il testo piccolo:
+     per le etichette si usa green-800, che arriva a 7,4:1. */
+  --secondary-text: #3d5626;
   --accent-soft: #f3f7ee;
   --halo-warm: #fffad2;
   --halo-soft: #fbf4f2;
@@ -100,6 +105,7 @@
     --brand-soft: #2a1a17;
     --accent: #d98a7e;
     --secondary: #9dbe77;
+    --secondary-text: #9dbe77;
     --accent-soft: #1d2317;
     --halo-warm: #4a4527;
     --halo-soft: #2a1a17;
@@ -122,6 +128,7 @@
   --brand-soft: #2a1a17;
   --accent: #d98a7e;
   --secondary: #9dbe77;
+  --secondary-text: #9dbe77;
   --accent-soft: #1d2317;
   --halo-warm: #4a4527;
   --halo-soft: #2a1a17;
@@ -169,10 +176,17 @@ body {
 }
 
 .display {
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+  text-wrap: balance;
+}
+
+h1.display {
+  font-weight: 900;
   letter-spacing: -0.022em;
-  line-height: 1.04;
+  line-height: 1.14;
 }
 
 .eyebrow {
@@ -180,7 +194,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--secondary);
+  color: var(--brand);
 }
 
 .prose-snami { max-width: 68ch; line-height: 1.72; color: var(--ink-muted); }
@@ -194,7 +208,9 @@ body {
 .prose-snami ol { list-style: decimal; }
 .prose-snami li { margin-bottom: 0.4em; }
 .prose-snami blockquote {
-  border-left: 3px solid var(--accent);
+  font-family: var(--font-quote);
+  font-size: 1.15rem;
+  border-left: 2px solid var(--brand);
   padding-left: 1.1rem;
   font-style: italic;
   color: var(--ink);
@@ -205,25 +221,18 @@ body {
 .prose-snami th, .prose-snami td { border: 1px solid var(--line); padding: 0.6rem 0.8rem; text-align: left; }
 
 /* Sfondo a maglia: due aloni sfumati, resi con gradienti radiali. */
-.mesh {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(58rem 30rem at 8% -14%, var(--halo-warm), transparent 60%),
-    radial-gradient(40rem 26rem at 96% 4%, var(--halo-soft), transparent 62%);
-  opacity: .85;
+/* Il sistema è documentario: il fondo resta bianco. Al posto della velatura
+   colorata, il filetto rosso di 2px che il design system usa come segno di
+   apertura. */
+.rule-brand {
+  height: 2px;
+  width: 100%;
+  background: var(--brand);
+  border: 0;
+  margin: 0;
 }
 
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.35;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+
 
 .marquee-track {
   display: flex;
@@ -262,3 +271,7 @@ body {
   }
 }
 :root[data-theme="dark"] .logo-plate { background: #ffffff; padding: .3rem .5rem; }
+
+/* I bordi dei campi devono staccare dal fondo di almeno 3:1: ink-200 si ferma
+   a 1,5:1, ink-400 arriva a 3,3:1. */
+input, select, textarea { border-color: var(--ink-faint); }

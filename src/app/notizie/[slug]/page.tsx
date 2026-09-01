@@ -44,8 +44,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <article>
-      <header className="grain relative overflow-hidden border-b">
-        <div className="mesh" aria-hidden />
+      <header className="relative overflow-hidden border-b">
         <div className="wrap relative py-16 md:py-24">
           <Link href="/notizie" className="text-sm font-semibold text-[var(--accent)]">
             ← Tutte le notizie

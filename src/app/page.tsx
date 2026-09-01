@@ -15,10 +15,10 @@ export default async function HomePage() {
   return (
     <>
       {/* ---------------------------------------------------------------- hero */}
-      <section className="grain relative overflow-hidden">
-        <div className="mesh" aria-hidden />
+      <section className="relative overflow-hidden">
         <div className="wrap relative grid gap-14 py-20 md:py-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div className="rise">
+            <hr className="rule-brand mb-8" />
             <p className="eyebrow">{site.extendedName}</p>
             <h1 className="display mt-5 text-[clamp(2.6rem,6vw,4.6rem)]">
               La voce dei medici
