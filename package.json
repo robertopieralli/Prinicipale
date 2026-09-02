@@ -1,0 +1,33 @@
+{
+  "name": "snami-bologna",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito istituzionale SNAMI - Sezione Provinciale di Bologna",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc src/lib/wix/categories.ts src/lib/wix/media.ts --outDir .test-build --module esnext --target es2022 --moduleResolution bundler --skipLibCheck && node tests/categories.test.mjs && node tests/media.test.mjs"
+  },
+  "dependencies": {
+    "@wix/blog": "^1.0.99",
+    "@wix/data": "^1.0.0",
+    "@wix/members": "^1.0.0",
+    "@wix/pricing-plans": "^1.0.0",
+    "@wix/sdk": "^1.15.0",
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  }
+}
