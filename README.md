@@ -146,10 +146,18 @@ Il progetto è una normale applicazione Next.js e gira su qualunque hosting che
 supporti Node.js. **Serve un host Node, non uno spazio statico:** l'area soci,
 lo scambio dei token OAuth e la cache dei contenuti girano lato server.
 
-Su Hostinger questo significa un piano **VPS**, non l'hosting condiviso: i piani
-condivisi servono PHP e file statici e non eseguono un processo Node
-persistente. Sul VPS il flusso è `npm ci`, `npm run build`, `npm start` dietro
-un reverse proxy, con il processo tenuto vivo da systemd o PM2.
+Su Hostinger ci sono due strade, entrambe praticabili:
+
+- **Hosting web con applicazione Node.js.** L'API Hostinger espone endpoint
+  dedicati (deploy di applicazioni JavaScript, avvio della build, variabili
+  d'ambiente, riavvio dell'applicazione) e riconosce i siti di tipo `nodejs`,
+  quindi non serve per forza un VPS. È la via più semplice: la build viene
+  eseguita da Hostinger e l'applicazione resta gestita dal pannello.
+- **VPS.** Controllo completo: `npm ci`, `npm run build`, `npm start` dietro un
+  reverse proxy, con il processo tenuto vivo da systemd o PM2.
+
+Quale delle due sia disponibile dipende dal piano attivo sull'account: si
+verifica elencando gli ordini e i siti dall'API.
 
 I server MCP di Hostinger sono dichiarati in `.mcp.json` e leggono il token
 dalla variabile `HOSTINGER_API_TOKEN`. Il token non va scritto nel file, che è
