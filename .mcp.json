@@ -1,0 +1,45 @@
+{
+  "_commento": [
+    "Server MCP di Hostinger per la pubblicazione del sito e la gestione del dominio.",
+    "Il token NON va scritto qui: questo file è versionato. Si legge dalla variabile",
+    "d'ambiente HOSTINGER_API_TOKEN, che va impostata nella shell o in .env.local",
+    "(escluso da git). Il token si genera da hPanel, sezione API."
+  ],
+  "mcpServers": {
+    "hostinger-hosting": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-hosting-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    },
+    "hostinger-domains": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-domains-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    },
+    "hostinger-dns": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-dns-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    },
+    "hostinger-billing": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-billing-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    },
+    "hostinger-reach": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-reach-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    },
+    "hostinger-vps": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-vps-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    },
+    "hostinger-ecommerce": {
+      "command": "npx",
+      "args": ["--package=hostinger-api-mcp@latest", "hostinger-ecommerce-mcp"],
+      "env": { "HOSTINGER_API_TOKEN": "${HOSTINGER_API_TOKEN}" }
+    }
+  }
+}

@@ -143,7 +143,19 @@ le pagine.
 ## Pubblicazione
 
 Il progetto è una normale applicazione Next.js e gira su qualunque hosting che
-supporti Node.js. Variabili d'ambiente da impostare in produzione:
+supporti Node.js. **Serve un host Node, non uno spazio statico:** l'area soci,
+lo scambio dei token OAuth e la cache dei contenuti girano lato server.
+
+Su Hostinger questo significa un piano **VPS**, non l'hosting condiviso: i piani
+condivisi servono PHP e file statici e non eseguono un processo Node
+persistente. Sul VPS il flusso è `npm ci`, `npm run build`, `npm start` dietro
+un reverse proxy, con il processo tenuto vivo da systemd o PM2.
+
+I server MCP di Hostinger sono dichiarati in `.mcp.json` e leggono il token
+dalla variabile `HOSTINGER_API_TOKEN`. Il token non va scritto nel file, che è
+versionato: va messo in `.env.local` o esportato nella shell.
+
+Variabili d'ambiente da impostare in produzione:
 
 ```
 NEXT_PUBLIC_WIX_CLIENT_ID
